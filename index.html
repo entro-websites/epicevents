@@ -117,10 +117,8 @@
   .section-head.center p{ margin-left: auto; margin-right: auto; }
   .section-head h2{
     font-size: clamp(30px, 4.6vw, 48px);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.01em;
   }
-  .section-head h2 em{ text-transform: none; letter-spacing: 0.01em; }
   .section-head p{ margin-top: 20px; font-size: 17px; }
 
   /* BUTTONS */
@@ -344,11 +342,10 @@
   .hero h1{
     color: var(--on-deep);
     font-size: clamp(38px, 7vw, 78px);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.01em;
     margin-bottom: 28px;
   }
-  .hero h1 em{ text-transform: none; letter-spacing: 0.01em; display: block; }
+  .hero h1 em{ display: block; }
   .hero p.lead{
     color: var(--on-deep-muted);
     font-size: 17px;
@@ -414,7 +411,7 @@
     padding-bottom: 112px;
   }
   .statement-inner{
-    max-width: 900px;
+    max-width: 1080px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -422,7 +419,7 @@
   .statement p{
     font-family: 'Playfair Display', Georgia, serif;
     color: var(--on-deep);
-    font-size: clamp(20px, 2.6vw, 30px);
+    font-size: clamp(18px, 2.05vw, 25px);
     line-height: 1.5;
     letter-spacing: 0.02em;
     max-width: none;
@@ -472,20 +469,6 @@
   }
   .pr-list h3{ font-size: 22px; margin-bottom: 6px; }
   .pr-list p{ font-size: 15px; max-width: none; }
-
-  /* PROSTOR: PODACI */
-  .facts{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-    padding-top: 28px;
-    margin-bottom: 56px;
-    border-top: 1px solid var(--line);
-  }
-  @media (max-width: 900px){ .facts{ grid-template-columns: 1fr 1fr; gap: 24px; } }
-  @media (max-width: 520px){ .facts{ grid-template-columns: 1fr; } }
-  .fact .label{ display: block; margin-bottom: 8px; color: var(--accent-dark); }
-  .fact p{ font-size: 15px; max-width: none; color: var(--text); }
 
   /* SERVICES */
   .services-grid{
@@ -550,27 +533,67 @@
   }
   .occ-item h3{ font-size: 26px; margin-bottom: 6px; }
   .occ-item p{ font-size: 15px; max-width: none; }
+  .occ-cta{ margin-top: 36px; }
 
-  /* STEPS */
-  .steps-grid{
+  /* PROCES */
+  .process-grid{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 72px;
+    align-items: center;
   }
-  @media (max-width: 991px){ .steps-grid{ grid-template-columns: repeat(2, 1fr); gap: 40px; } }
-  @media (max-width: 560px){ .steps-grid{ grid-template-columns: 1fr; } }
-  .step{ border-top: 1px solid var(--line); padding-top: 24px; }
-  .step .n{
+  @media (max-width: 900px){
+    .process-grid{ grid-template-columns: 1fr; gap: 40px; }
+  }
+  .process-head h2{
+    font-size: clamp(30px, 4.2vw, 46px);
+    margin-bottom: 20px;
+  }
+  .process-head .label{ display: block; margin-bottom: 10px; color: var(--accent-dark); }
+  .process-head p{ font-size: 16px; }
+
+  .proc-list{ display: flex; flex-direction: column; gap: 8px; }
+  .proc-item{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 28px;
+    align-items: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 28px;
+    padding-right: 28px;
+    transition: background .3s ease;
+  }
+  .proc-item:hover{ background: var(--bg-alt); }
+  .proc-item.is-active{ background: var(--bg-alt); }
+  .proc-badge{
+    width: 64px;
+    height: 64px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 48px;
     font-style: italic;
-    color: var(--accent);
-    line-height: 1;
-    display: block;
-    margin-bottom: 16px;
+    font-size: 20px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: background .3s ease, color .3s ease, border-color .3s ease;
   }
-  .step h3{ font-size: 24px; margin-bottom: 8px; }
-  .step p{ font-size: 15px; max-width: none; }
+  .proc-item.is-active .proc-badge{
+    background: var(--deep);
+    border-color: var(--deep);
+    color: var(--on-deep);
+  }
+  .proc-item.is-active h3{ color: var(--accent-dark); }
+  .proc-item h3{ font-size: 24px; margin-bottom: 6px; }
+  .proc-item p{ font-size: 15px; max-width: none; }
+  @media (max-width: 560px){
+    .proc-item{ gap: 20px; padding-left: 20px; padding-right: 20px; }
+    .proc-badge{ width: 52px; height: 52px; font-size: 17px; }
+  }
 
   /* GALLERY */
   .gallery{ background: var(--bg-blush); }
@@ -643,11 +666,9 @@
   .contact h2{
     color: var(--on-deep);
     font-size: clamp(30px, 4.4vw, 46px);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.01em;
     margin-bottom: 20px;
   }
-  .contact h2 em{ text-transform: none; }
   .contact p{ color: var(--on-deep-muted); }
   .contact-grid{
     display: grid;
@@ -767,7 +788,7 @@
       <ul>
         <li><a href="#ponuda">Ponuda</a></li>
         <li><a href="#prilike">Prilike</a></li>
-        <li><a href="#prostor">Prostor</a></li>
+        <li><a href="#galerija">Galerija</a></li>
         <li><a href="#pitanja">Pitanja</a></li>
       </ul>
       <a href="tel:+381600000000" class="btn nav-cta">Zakaži termin</a>
@@ -779,7 +800,7 @@
   <div class="mobile-menu" id="mobile-menu">
     <a href="#ponuda">Ponuda</a>
     <a href="#prilike">Prilike</a>
-    <a href="#prostor">Prostor</a>
+    <a href="#galerija">Galerija</a>
     <a href="#pitanja">Pitanja</a>
     <a href="tel:+381600000000" class="btn btn-primary">Zakaži termin</a>
   </div>
@@ -967,7 +988,7 @@
       </div>
       <div class="reveal">
         <span class="script">Prilike</span>
-        <h2 style="font-size:clamp(28px,4vw,42px);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Za koje događaje <em>otvaramo terasu</em></h2>
+        <h2 style="font-size:clamp(28px,4vw,42px);letter-spacing:0.01em;margin-bottom:40px;">Za koje događaje <em>otvaramo terasu</em></h2>
         <ul class="occ-list">
           <li class="occ-item">
             <span class="occ-num">01</span>
@@ -998,56 +1019,66 @@
             </div>
           </li>
         </ul>
+        <div class="occ-cta">
+          <a href="#kontakt" class="btn btn-primary">Zakaži svoj događaj</a>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="kako-radimo">
-    <div class="wrap">
-      <div class="section-head center reveal">
+    <div class="wrap process-grid">
+      <div class="process-head reveal">
         <span class="script">Kako radimo</span>
-        <div class="rule"></div>
         <h2>Od poziva <em>do prvog plesa</em></h2>
-        <p>Četiri koraka, bez papirologije koja se vuče mesecima.</p>
+        <span class="label">Četiri koraka</span>
+        <p>Bez papirologije koja se vuče mesecima. Posle svakog koraka znaš tačno šta je dogovoreno i šta sledi.</p>
       </div>
-      <div class="steps-grid">
-        <div class="step reveal">
-          <span class="n">01</span>
-          <h3>Pozoveš i kažeš datum</h3>
-          <p>Odmah ti javimo da li je termin slobodan i šta ulazi u njega.</p>
+      <div class="proc-list">
+
+        <div class="proc-item is-active reveal">
+          <span class="proc-badge">01</span>
+          <div>
+            <h3>Pozoveš i kažeš datum</h3>
+            <p>Odmah ti javimo da li je termin slobodan i šta ulazi u njega.</p>
+          </div>
         </div>
-        <div class="step reveal">
-          <span class="n">02</span>
-          <h3>Dođeš da vidiš prostor</h3>
-          <p>Prođemo kroz terasu, raspored stolova i mesto za ceremoniju.</p>
+
+        <div class="proc-item reveal">
+          <span class="proc-badge">02</span>
+          <div>
+            <h3>Dođeš da vidiš prostor</h3>
+            <p>Prođemo kroz terasu, raspored stolova i mesto za ceremoniju.</p>
+          </div>
         </div>
-        <div class="step reveal">
-          <span class="n">03</span>
-          <h3>Dogovorimo detalje</h3>
-          <p>Cveće, raspored sedenja i redosled programa upišemo u plan dana.</p>
+
+        <div class="proc-item reveal">
+          <span class="proc-badge">03</span>
+          <div>
+            <h3>Dogovorimo detalje</h3>
+            <p>Cveće, raspored sedenja i redosled programa upišemo u plan dana.</p>
+          </div>
         </div>
-        <div class="step reveal">
-          <span class="n">04</span>
-          <h3>Dan događaja</h3>
-          <p>Ti dolaziš kao gost na svoje slavlje, mi vodimo računa o ostatku.</p>
+
+        <div class="proc-item reveal">
+          <span class="proc-badge">04</span>
+          <div>
+            <h3>Dan događaja</h3>
+            <p>Ti dolaziš kao gost na svoje slavlje, mi vodimo računa o ostatku.</p>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <section class="gallery" id="prostor">
+  <section class="gallery" id="galerija">
     <div class="wrap">
       <div class="section-head center reveal">
-        <span class="script">Prostor</span>
+        <span class="script">Galerija</span>
         <div class="rule"></div>
         <h2>Kako terasa <em>izgleda uživo</em></h2>
         <p>Nekoliko kadrova sa lokacije. Zakaži obilazak i vidi ovo lično, uz kafu ili čašu vina.</p>
-      </div>
-      <div class="facts reveal">
-        <div class="fact"><span class="label">Krov</span><p>Pokretni krov i staklene stranice</p></div>
-        <div class="fact"><span class="label">Klima</span><p>Freonsko i evaporativno hlađenje i grejanje</p></div>
-        <div class="fact"><span class="label">Pogled</span><p>Dunav sa cele terase</p></div>
-        <div class="fact"><span class="label">Lokacija</span><p>Devet minuta od centra grada</p></div>
       </div>
       <div class="gallery-grid reveal">
         <div class="ph g1">Fotografija krovne terase sa pokretnim krovom</div>
@@ -1140,7 +1171,7 @@
         <ul>
           <li><a href="#o-nama">O nama</a></li>
           <li><a href="#ponuda">Ponuda</a></li>
-          <li><a href="#prostor">Prostor</a></li>
+          <li><a href="#galerija">Galerija</a></li>
         </ul>
       </div>
       <div class="footer-col">
