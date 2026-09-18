@@ -136,7 +136,7 @@
     letter-spacing: 0.18em;
     border: 1px solid transparent;
     cursor: pointer;
-    transition: background .25s ease, color .25s ease, border-color .25s ease;
+    transition: background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
     white-space: nowrap;
   }
   .btn-primary{
@@ -144,6 +144,7 @@
     color: var(--on-deep);
     border-color: var(--deep);
   }
+  .btn:hover{ transform: translateY(-2px); }
   .btn-primary:hover{ background: var(--deep-dark); border-color: var(--deep-dark); }
   .btn-outline{
     background: transparent;
@@ -196,6 +197,18 @@
     color: var(--on-deep-muted);
     transition: color .25s ease;
   }
+  nav.desktop-nav a{ position: relative; }
+  nav.desktop-nav a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width .3s ease;
+  }
+  nav.desktop-nav a:hover::after{ width: 100%; }
   nav.desktop-nav a:hover{ color: var(--on-deep); }
   .nav-cta{
     background: transparent;
@@ -330,6 +343,24 @@
     z-index: 2;
     text-align: center;
   }
+  @keyframes rise{
+    from{ opacity: 0; transform: translateY(18px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+  .hero-inner > *{
+    animation: rise .9s cubic-bezier(.2,.7,.3,1) backwards;
+  }
+  .hero-inner .script{ animation-delay: .05s; }
+  .hero-inner h1{ animation-delay: .18s; }
+  .hero-inner p.lead{ animation-delay: .34s; }
+  .hero-inner .btn{ animation-delay: .5s; }
+  .hero-note{ animation: rise 1s ease .9s backwards; }
+  .hero-bg{ animation: bgIn 1.4s ease backwards; }
+  @keyframes bgIn{
+    from{ opacity: 0; transform: scale(1.04); }
+    to{ opacity: 1; transform: scale(1); }
+  }
+
   .hero-inner{
     position: relative;
     z-index: 1;
@@ -488,10 +519,18 @@
     padding-bottom: 44px;
     padding-left: 36px;
     padding-right: 36px;
-    transition: background .3s ease;
+    transition: background .3s ease, transform .3s ease;
   }
-  .service-card:hover{ background: var(--bg-alt); }
-  .service-card svg{ width: 28px; height: 28px; stroke: var(--accent-dark); fill: none; margin-bottom: 24px; }
+  .service-card:hover{ background: var(--bg-alt); transform: translateY(-4px); }
+  .service-card svg{
+    width: 28px;
+    height: 28px;
+    stroke: var(--accent-dark);
+    fill: none;
+    margin-bottom: 24px;
+    transition: transform .4s cubic-bezier(.2,.7,.3,1);
+  }
+  .service-card:hover svg{ transform: translateY(-4px) scale(1.08); }
   .service-card h3{
     font-size: 25px;
     margin-bottom: 12px;
@@ -524,6 +563,10 @@
     border-bottom: 1px solid var(--line);
   }
   .occ-item:first-child{ border-top: 1px solid var(--line); }
+  .occ-item{ transition: background .3s ease, padding-left .3s ease; }
+  .occ-item:hover{ background: rgba(255,253,248,0.6); padding-left: 12px; }
+  .occ-num{ transition: color .3s ease; }
+  .occ-item:hover .occ-num{ color: var(--accent); }
   .occ-num{
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 22px;
@@ -604,6 +647,9 @@
     gap: 16px;
   }
   .gallery-grid .ph{ height: 100%; }
+  .g-item{ overflow: hidden; }
+  .g-item .ph{ transition: transform .8s cubic-bezier(.2,.7,.3,1); }
+  .g-item:hover .ph{ transform: scale(1.05); }
   .g1{ grid-column: span 2; grid-row: span 4; }
   .g2{ grid-column: span 2; grid-row: span 2; }
   .g3{ grid-column: span 1; grid-row: span 2; }
@@ -653,6 +699,11 @@
   .faq-item summary .plus::before{ left: 0; top: 7px; width: 16px; height: 1px; }
   .faq-item summary .plus::after{ top: 0; left: 7px; width: 1px; height: 16px; }
   .faq-item[open] summary .plus::after{ transform: rotate(90deg); opacity: 0; }
+  @keyframes answerIn{
+    from{ opacity: 0; transform: translateY(-6px); }
+    to{ opacity: 1; transform: translateY(0); }
+  }
+  .faq-item[open] .answer{ animation: answerIn .35s ease backwards; }
   .faq-item .answer{
     padding-bottom: 28px;
     font-size: 16px;
@@ -773,7 +824,17 @@
     transform: translateY(0);
     transition: opacity .7s ease, transform .7s ease;
   }
-  .reveal.pre{ opacity: 0; transform: translateY(12px); }
+  .reveal.pre{ opacity: 0; transform: translateY(16px); }
+
+  /* MANJE ANIMACIJE ZA KORISNIKE KOJI IH GASE */
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration: .001ms !important;
+      animation-delay: 0ms !important;
+      transition-duration: .001ms !important;
+    }
+    .reveal.pre{ opacity: 1; transform: none; }
+  }
 </style>
 </head>
 <body>
@@ -1080,12 +1141,12 @@
         <h2>Kako terasa <em>izgleda uživo</em></h2>
         <p>Nekoliko kadrova sa lokacije. Zakaži obilazak i vidi ovo lično, uz kafu ili čašu vina.</p>
       </div>
-      <div class="gallery-grid reveal">
-        <div class="ph g1">Fotografija krovne terase sa pokretnim krovom</div>
-        <div class="ph g2">Fotografija pogleda na Dunav sa terase</div>
-        <div class="ph g3">Fotografija postavljenog stola</div>
-        <div class="ph g4">Fotografija dekoracije za ceremoniju</div>
-        <div class="ph g5">Fotografija terase u večernjem osvetljenju</div>
+      <div class="gallery-grid">
+        <div class="g-item g1 reveal"><div class="ph">Fotografija krovne terase sa pokretnim krovom</div></div>
+        <div class="g-item g2 reveal"><div class="ph">Fotografija pogleda na Dunav sa terase</div></div>
+        <div class="g-item g3 reveal"><div class="ph">Fotografija postavljenog stola</div></div>
+        <div class="g-item g4 reveal"><div class="ph">Fotografija dekoracije za ceremoniju</div></div>
+        <div class="g-item g5 reveal"><div class="ph">Fotografija terase u večernjem osvetljenju</div></div>
       </div>
     </div>
   </section>
@@ -1097,28 +1158,28 @@
         <div class="rule"></div>
         <h2>Ono što <em>najčešće pitaju</em></h2>
       </div>
-      <div class="faq-list reveal">
-        <details class="faq-item">
+      <div class="faq-list">
+        <details class="faq-item reveal">
           <summary>Šta se dešava ako pada kiša<span class="plus"></span></summary>
           <div class="answer">Krov i staklene stranice se zatvore za nekoliko minuta. Program se nastavlja na istom mestu, gosti ostaju na terasi.</div>
         </details>
-        <details class="faq-item">
+        <details class="faq-item reveal">
           <summary>Da li je prostor grejan i klimatizovan<span class="plus"></span></summary>
           <div class="answer">Jeste. Terasa ima freonsko i evaporativno hlađenje i grejanje, pa radi i u julu i u oktobru.</div>
         </details>
-        <details class="faq-item">
+        <details class="faq-item reveal">
           <summary>Koliko ste udaljeni od centra grada<span class="plus"></span></summary>
           <div class="answer">Devet minuta vožnje. Gosti stižu bez planiranja putovanja i bez traženja prevoza posle ponoći.</div>
         </details>
-        <details class="faq-item">
+        <details class="faq-item reveal">
           <summary>Organizujete li venčanje ili samo izdajete prostor<span class="plus"></span></summary>
           <div class="answer">Radimo kompletnu organizaciju venčanja na otvorenom, od rasporeda sedenja do redosleda programa. Ako želiš samo prostor, i to je opcija.</div>
         </details>
-        <details class="faq-item">
+        <details class="faq-item reveal">
           <summary>Može li obilazak pre rezervacije<span class="plus"></span></summary>
           <div class="answer">Može. Javi se telefonom i dogovorimo termin kad je terasa slobodna, pa prođemo kroz prostor zajedno.</div>
         </details>
-        <details class="faq-item">
+        <details class="faq-item reveal">
           <summary>Kako se rezerviše datum<span class="plus"></span></summary>
           <div class="answer">Jednim pozivom. Kažemo ti koji su datumi otvoreni i istog dana krećemo da dogovaramo detalje.</div>
         </details>
@@ -1233,6 +1294,15 @@
   const revealEls = document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
     revealEls.forEach(el => el.classList.add('pre'));
+
+    // stavke iz iste grupe ulaze jedna za drugom
+    document.querySelectorAll('.services-grid, .proc-list, .occ-list, .gallery-grid, .faq-list, .pr-grid').forEach(group => {
+      let i = 0;
+      group.querySelectorAll('.reveal').forEach(el => {
+        el.style.transitionDelay = (i * 90) + 'ms';
+        i++;
+      });
+    });
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
