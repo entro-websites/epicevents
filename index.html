@@ -7,26 +7,31 @@
 <meta name="description" content="Event centar na obali Dunava sa krovnom terasom, pokretnim krovom i klimom koja radi po svakom vremenu. Zakaži termin za venčanje ili proslavu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Overpass:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --accent: #e3b846;
-    --accent-dark: #ad8324;
-    --accent-soft: #faf1da;
-    --accent-glow: rgba(227,184,70,0.35);
+    --accent-dark: #a8801f;
+    --accent-soft: #f6ecd6;
 
-    --text: rgba(26,22,14,0.92);
-    --text-muted: rgba(26,22,14,0.65);
-    --text-faint: rgba(26,22,14,0.45);
+    --ink: #2b2018;
+    --text: rgba(43,32,24,0.92);
+    --text-muted: rgba(43,32,24,0.64);
+    --text-faint: rgba(43,32,24,0.44);
 
-    --bg: #fffdf8;
-    --bg-alt: #fbf7ee;
-    --line: rgba(26,22,14,0.1);
+    --bg: #fdfaf5;
+    --bg-alt: #f4ece1;
+    --bg-blush: #ece0d4;
+    --deep: #6d5949;
+    --deep-dark: #473729;
 
-    --radius-card: 20px;
-    --radius-btn: 999px;
-    --radius-sm: 12px;
+    --on-deep: rgba(255,250,244,0.94);
+    --on-deep-muted: rgba(255,250,244,0.68);
+    --line: rgba(43,32,24,0.14);
+    --line-soft: rgba(43,32,24,0.08);
+    --line-light: rgba(255,250,244,0.24);
 
+    --radius: 0px;
     --wrap: 1280px;
   }
 
@@ -39,22 +44,25 @@
     color: var(--text);
     background: var(--bg);
     font-weight: 400;
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
 
   img{ max-width: 100%; display:block; }
-
   a{ color: inherit; text-decoration: none; }
 
-  h1, h2, h3{
-    font-family: 'Overpass', sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.01em;
+  h1, h2, h3, .display{
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
     color: var(--text);
-    line-height: 1.15;
+    line-height: 1.08;
+    letter-spacing: 0.01em;
   }
+  h1 em, h2 em, h3 em{ font-style: italic; font-weight: 300; }
+
+  p{ color: var(--text-muted); max-width: 64ch; }
 
   .wrap{
     max-width: var(--wrap);
@@ -62,40 +70,58 @@
     padding-left: 24px;
     padding-right: 24px;
   }
-
   @media (max-width: 768px){
     .wrap{ padding-left: 20px; padding-right: 20px; }
   }
 
   section{
-    padding-top: 96px;
-    padding-bottom: 96px;
+    padding-top: 120px;
+    padding-bottom: 120px;
   }
-
   @media (max-width: 768px){
-    section{ padding-top: 64px; padding-bottom: 64px; }
+    section{ padding-top: 72px; padding-bottom: 72px; }
   }
 
-  p{ color: var(--text-muted); max-width: 65ch; }
-
-  .eyebrow{
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
+  /* SHARED BITS */
+  .script{
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 22px;
     color: var(--accent-dark);
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
-  .eyebrow::before{
-    content: "";
-    width: 24px;
-    height: 2px;
-    background: var(--accent);
+  .label{
     display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--text-faint);
   }
+  .rule{
+    width: 56px;
+    height: 1px;
+    background: var(--accent);
+    margin: 0 auto 20px auto;
+  }
+  .section-head{
+    max-width: 680px;
+    margin-bottom: 64px;
+  }
+  .section-head.center{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .section-head.center p{ margin-left: auto; margin-right: auto; }
+  .section-head h2{
+    font-size: clamp(30px, 4.6vw, 48px);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .section-head h2 em{ text-transform: none; letter-spacing: 0.01em; }
+  .section-head p{ margin-top: 20px; font-size: 17px; }
 
   /* BUTTONS */
   .btn{
@@ -103,89 +129,102 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 16px 32px;
-    border-radius: var(--radius-btn);
-    font-weight: 700;
-    font-size: 16px;
-    border: 2px solid transparent;
+    padding: 16px 36px;
+    border-radius: var(--radius);
+    font-family: 'Overpass', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    border: 1px solid transparent;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    transition: background .25s ease, color .25s ease, border-color .25s ease;
     white-space: nowrap;
   }
   .btn-primary{
-    background: var(--accent);
-    color: #241c08;
-    box-shadow: 0 8px 24px var(--accent-glow);
+    background: var(--deep);
+    color: var(--on-deep);
+    border-color: var(--deep);
   }
-  .btn-primary:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px var(--accent-glow);
-    background: var(--accent-dark);
-    color: #fff;
-  }
+  .btn-primary:hover{ background: var(--deep-dark); border-color: var(--deep-dark); }
   .btn-outline{
     background: transparent;
     border-color: var(--line);
     color: var(--text);
   }
-  .btn-outline:hover{
-    border-color: var(--accent);
-    color: var(--accent-dark);
+  .btn-outline:hover{ border-color: var(--deep); background: var(--deep); color: var(--on-deep); }
+  .btn-light{
+    background: transparent;
+    border-color: var(--line-light);
+    color: var(--on-deep);
   }
+  .btn-light:hover{ background: var(--on-deep); color: var(--deep-dark); border-color: var(--on-deep); }
 
   /* HEADER */
   header{
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(255,253,248,0.85);
-    border-bottom: 1px solid transparent;
-    transition: box-shadow .3s ease, border-color .3s ease, backdrop-filter .3s ease;
+    background: transparent;
+    border-bottom: 1px solid var(--line-light);
+    transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
   }
-  header.scrolled{
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--line);
-    box-shadow: 0 4px 24px rgba(26,22,14,0.05);
-  }
-  .nav-inner{
+  header .nav-inner{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 84px;
+    height: 88px;
   }
   .logo{
     display: flex;
     align-items: center;
     gap: 12px;
-    font-weight: 800;
-    font-size: 19px;
-    letter-spacing: -0.01em;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 24px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--on-deep);
+    transition: color .3s ease;
   }
-  .logo img{ height: 36px; width: auto; }
+  .logo img{ height: 32px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; transition: filter .3s ease, opacity .3s ease; }
 
-  nav.desktop-nav{
-    display: flex;
-    align-items: center;
-    gap: 40px;
-  }
-  nav.desktop-nav ul{
-    display: flex;
-    list-style: none;
-    gap: 32px;
-  }
+  nav.desktop-nav{ display: flex; align-items: center; gap: 40px; }
+  nav.desktop-nav ul{ display: flex; list-style: none; gap: 32px; }
   nav.desktop-nav a{
+    font-size: 11px;
     font-weight: 600;
-    font-size: 15px;
-    color: var(--text-muted);
-    transition: color .2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--on-deep-muted);
+    transition: color .25s ease;
   }
-  nav.desktop-nav a:hover{ color: var(--accent-dark); }
+  nav.desktop-nav a:hover{ color: var(--on-deep); }
+  .nav-cta{
+    background: transparent;
+    border: 1px solid var(--line-light);
+    color: var(--on-deep);
+    padding: 14px 28px;
+  }
+  .nav-cta:hover{ background: var(--on-deep); color: var(--deep-dark); border-color: var(--on-deep); }
+
+  header.scrolled{
+    background: rgba(253,250,245,0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  header.scrolled .logo{ color: var(--text); }
+  header.scrolled .logo img{ filter: none; opacity: 1; }
+  header.scrolled nav.desktop-nav a{ color: var(--text-muted); }
+  header.scrolled nav.desktop-nav a:hover{ color: var(--accent-dark); }
+  header.scrolled .nav-cta{ background: var(--deep); border-color: var(--deep); color: var(--on-deep); }
+  header.scrolled .nav-cta:hover{ background: var(--deep-dark); border-color: var(--deep-dark); }
+  header.scrolled .hamburger span{ background: var(--text); }
 
   .hamburger{
     display: none;
     flex-direction: column;
     justify-content: center;
-    gap: 5px;
+    gap: 6px;
     width: 44px;
     height: 44px;
     background: none;
@@ -195,11 +234,10 @@
   }
   .hamburger span{
     display: block;
-    height: 2px;
+    height: 1px;
     width: 26px;
-    background: var(--text);
-    border-radius: 2px;
-    transition: transform .3s ease, opacity .3s ease;
+    background: var(--on-deep);
+    transition: transform .3s ease, opacity .3s ease, background .3s ease;
   }
   .hamburger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2){ opacity: 0; }
@@ -208,29 +246,29 @@
   .mobile-menu{
     display: none;
     position: fixed;
-    top: 84px;
+    top: 88px;
     left: 0;
     right: 0;
     bottom: 0;
     background: var(--bg);
     z-index: 99;
-    padding: 40px 24px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    padding-left: 24px;
+    padding-right: 24px;
     flex-direction: column;
-    gap: 28px;
-    transform: translateY(-8px);
+    gap: 24px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity .25s ease, transform .25s ease;
+    transition: opacity .25s ease;
   }
-  .mobile-menu.open{
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-  .mobile-menu a{
-    font-size: 20px;
-    font-weight: 700;
+  .mobile-menu.open{ display: flex; opacity: 1; pointer-events: auto; }
+  .mobile-menu a:not(.btn){
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 30px;
+    color: var(--text);
+    border-bottom: 1px solid var(--line-soft);
+    padding-bottom: 16px;
   }
   .mobile-menu .btn{ width: 100%; margin-top: 12px; }
 
@@ -239,285 +277,417 @@
     .hamburger{ display: flex; }
   }
 
+  /* PLACEHOLDER IMAGES */
+  .ph{
+    width: 100%;
+    background: repeating-linear-gradient(135deg, #e6ded4, #e6ded4 10px, #ded5c9 10px, #ded5c9 20px);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgba(43,32,24,0.5);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 1.8;
+  }
+  .ph-dark{
+    background: repeating-linear-gradient(135deg, #5b4a3c, #5b4a3c 12px, #52422f 12px, #52422f 24px);
+    color: rgba(255,250,244,0.5);
+  }
+
   /* HERO */
   .hero{
     position: relative;
-    padding-top: 120px;
-    padding-bottom: 120px;
+    margin-top: -89px;
+    padding-top: 220px;
+    padding-bottom: 140px;
+    background: var(--deep-dark);
     overflow: hidden;
   }
-  .hero::before{
-    content:"";
+  .hero-bg{
     position: absolute;
-    top: -20%;
-    right: -10%;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, var(--accent-glow) 0%, rgba(227,184,70,0) 70%);
-    pointer-events: none;
-    z-index: 0;
+    inset: 0;
+    background: repeating-linear-gradient(135deg, #5b4a3c, #5b4a3c 12px, #52422f 12px, #52422f 24px);
+  }
+  .hero-bg::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(40,30,22,0.72) 0%, rgba(40,30,22,0.52) 45%, rgba(40,30,22,0.85) 100%);
+  }
+  .hero-note{
+    position: absolute;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(255,250,244,0.42);
+    z-index: 2;
+    text-align: center;
   }
   .hero-inner{
     position: relative;
     z-index: 1;
-    max-width: 780px;
+    max-width: 880px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
+  .hero .script{ color: var(--accent); }
   .hero h1{
-    font-size: clamp(38px, 6vw, 68px);
-    margin-bottom: 24px;
+    color: var(--on-deep);
+    font-size: clamp(38px, 7vw, 78px);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 28px;
   }
-  .hero h1 span{ color: var(--accent-dark); }
+  .hero h1 em{ text-transform: none; letter-spacing: 0.01em; display: block; }
   .hero p.lead{
-    font-size: clamp(17px, 2vw, 20px);
-    color: var(--text-muted);
+    color: var(--on-deep-muted);
+    font-size: 17px;
     max-width: 56ch;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 40px;
   }
-  .hero-chips{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 48px;
+  .hero-divider{
+    width: 1px;
+    height: 56px;
+    background: var(--line-light);
+    margin: 0 auto 32px auto;
   }
-  .chip{
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+
+  /* STRIP */
+  .strip{
     background: var(--bg-alt);
-    border: 1px solid var(--line);
-    padding: 10px 18px;
-    border-radius: var(--radius-btn);
-    font-size: 14px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .strip-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-left: 1px solid var(--line-soft);
+  }
+  .strip-item{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 32px;
+    padding-right: 32px;
+    border-right: 1px solid var(--line-soft);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .strip-item svg{ width: 24px; height: 24px; stroke: var(--accent-dark); fill: none; flex-shrink: 0; }
+  .strip-item span{
+    font-size: 12px;
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
     color: var(--text-muted);
   }
-  .chip svg{ width: 16px; height: 16px; stroke: var(--accent-dark); flex-shrink: 0; }
+  @media (max-width: 900px){
+    .strip-grid{ grid-template-columns: 1fr; border-left: none; }
+    .strip-item{ border-right: none; border-bottom: 1px solid var(--line-soft); padding-left: 0; padding-right: 0; }
+    .strip-item:last-child{ border-bottom: none; }
+  }
 
-  /* BOL UVOD */
-  .pain{
-    background: var(--bg-alt);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+  /* ABOUT INTRO */
+  .intro-actions{ margin-top: 36px; }
+  .intro-img{ margin-top: 72px; }
+  .intro-img .ph{ aspect-ratio: 21/9; }
+  @media (max-width: 768px){
+    .intro-img .ph{ aspect-ratio: 4/3; }
   }
-  .pain-inner{
-    max-width: 760px;
+
+  /* STATEMENT BAND */
+  .statement{
+    background: var(--deep);
+    padding-top: 112px;
+    padding-bottom: 112px;
   }
-  .pain h2{
-    font-size: clamp(24px, 3vw, 32px);
-    margin-bottom: 20px;
+  .statement-inner{
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
-  .pain p{
-    font-size: 18px;
-    max-width: 60ch;
+  .statement p{
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--on-deep);
+    font-size: clamp(20px, 2.6vw, 30px);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    max-width: none;
   }
-  .pain p + p{ margin-top: 14px; }
+  .statement p em{ color: var(--accent); font-style: italic; }
+  .statement .rule{ background: var(--accent); }
 
   /* SERVICES */
-  .section-head{
-    max-width: 640px;
-    margin-bottom: 56px;
-  }
-  .section-head h2{
-    font-size: clamp(28px, 4vw, 42px);
-  }
-  .section-head p{
-    margin-top: 16px;
-    font-size: 17px;
-  }
-
   .services-grid{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 0;
+    border-top: 1px solid var(--line-soft);
+    border-left: 1px solid var(--line-soft);
   }
-  @media (max-width: 991px){
-    .services-grid{ grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 600px){
-    .services-grid{ grid-template-columns: 1fr; }
-  }
+  @media (max-width: 991px){ .services-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px){ .services-grid{ grid-template-columns: 1fr; } }
 
   .service-card{
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-card);
-    padding: 32px 28px;
-    transition: box-shadow .3s ease, transform .3s ease, border-color .3s ease;
+    border-right: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+    padding-top: 44px;
+    padding-bottom: 44px;
+    padding-left: 36px;
+    padding-right: 36px;
+    transition: background .3s ease;
   }
-  .service-card:hover{
-    box-shadow: 0 24px 48px rgba(26,22,14,0.08);
-    transform: translateY(-4px);
-    border-color: var(--accent-glow);
-  }
-  .icon-badge{
-    width: 52px;
-    height: 52px;
-    border-radius: var(--radius-sm);
-    background: var(--accent-soft);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  .icon-badge svg{ width: 26px; height: 26px; stroke: var(--accent-dark); fill: none; }
+  .service-card:hover{ background: var(--bg-alt); }
+  .service-card svg{ width: 28px; height: 28px; stroke: var(--accent-dark); fill: none; margin-bottom: 24px; }
   .service-card h3{
-    font-size: 19px;
-    font-weight: 700;
-    margin-bottom: 10px;
+    font-size: 25px;
+    margin-bottom: 12px;
+    line-height: 1.25;
   }
   .service-card p{ font-size: 15px; max-width: none; }
-
-  /* GALLERY */
-  .gallery-grid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  @media (max-width: 768px){
-    .gallery-grid{ grid-template-columns: 1fr; }
-  }
-  .placeholder-img{
-    width: 100%;
-    aspect-ratio: 4/3;
-    background: repeating-linear-gradient(135deg, #ececec, #ececec 10px, #e2e2e2 10px, #e2e2e2 20px);
-    border-radius: var(--radius-card);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #8a8a8a;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    padding: 20px;
+  @media (max-width: 600px){
+    .service-card{ padding-left: 24px; padding-right: 24px; }
   }
 
-  /* ABOUT */
-  .about{
-    background: var(--bg-alt);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-  .about-grid{
+  /* OCCASIONS */
+  .occasions{ background: var(--bg-alt); }
+  .split{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    grid-template-columns: 0.85fr 1fr;
+    gap: 72px;
     align-items: center;
   }
   @media (max-width: 900px){
-    .about-grid{ grid-template-columns: 1fr; gap: 32px; }
+    .split{ grid-template-columns: 1fr; gap: 40px; }
   }
-  .about h2{
-    font-size: clamp(28px, 4vw, 40px);
-    margin-bottom: 20px;
+  .split .ph{ aspect-ratio: 3/4; }
+  .occ-list{ list-style: none; }
+  .occ-item{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
   }
-  .about p{ font-size: 17px; margin-bottom: 16px; }
-  .about-traits{
-    display: flex;
-    gap: 12px;
-    margin-top: 24px;
-    flex-wrap: wrap;
-  }
-  .trait{
-    padding: 8px 16px;
-    border-radius: var(--radius-btn);
-    border: 1px solid var(--accent-glow);
+  .occ-item:first-child{ border-top: 1px solid var(--line); }
+  .occ-num{
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-style: italic;
     color: var(--accent-dark);
-    font-weight: 700;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    line-height: 1.4;
   }
-  .about .placeholder-img{ aspect-ratio: 4/5; }
+  .occ-item h3{ font-size: 26px; margin-bottom: 6px; }
+  .occ-item p{ font-size: 15px; max-width: none; }
 
-  /* CTA CLOSE */
-  .cta-close{
-    position: relative;
-    overflow: hidden;
+  /* STEPS */
+  .steps-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
   }
-  .cta-close::before{
-    content:"";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    width: 900px;
-    height: 500px;
-    background: radial-gradient(circle, var(--accent-glow) 0%, rgba(227,184,70,0) 70%);
-    z-index: 0;
-    pointer-events: none;
-  }
-  .cta-box{
-    position: relative;
-    z-index: 1;
-    background: var(--bg);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-card);
-    padding: 64px 48px;
-    text-align: center;
-    max-width: 780px;
-    margin: 0 auto;
-    box-shadow: 0 32px 64px rgba(26,22,14,0.06);
-  }
-  @media (max-width: 600px){
-    .cta-box{ padding: 40px 24px; }
-  }
-  .cta-box h2{
-    font-size: clamp(26px, 4vw, 38px);
+  @media (max-width: 991px){ .steps-grid{ grid-template-columns: repeat(2, 1fr); gap: 40px; } }
+  @media (max-width: 560px){ .steps-grid{ grid-template-columns: 1fr; } }
+  .step{ border-top: 1px solid var(--line); padding-top: 24px; }
+  .step .n{
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 48px;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1;
+    display: block;
     margin-bottom: 16px;
   }
-  .cta-box p{
-    margin: 0 auto 32px auto;
-    font-size: 17px;
-  }
-  .cta-actions{
-    display: flex;
-    justify-content: center;
+  .step h3{ font-size: 24px; margin-bottom: 8px; }
+  .step p{ font-size: 15px; max-width: none; }
+
+  /* GALLERY */
+  .gallery{ background: var(--bg-blush); }
+  .gallery-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 120px;
     gap: 16px;
-    flex-wrap: wrap;
   }
-  .contact-info{
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    flex-wrap: wrap;
-    margin-top: 40px;
-    padding-top: 32px;
-    border-top: 1px solid var(--line);
+  .gallery-grid .ph{ height: 100%; }
+  .g1{ grid-column: span 2; grid-row: span 4; }
+  .g2{ grid-column: span 2; grid-row: span 2; }
+  .g3{ grid-column: span 1; grid-row: span 2; }
+  .g4{ grid-column: span 1; grid-row: span 2; }
+  .g5{ grid-column: span 4; grid-row: span 2; }
+  @media (max-width: 900px){
+    .gallery-grid{ grid-template-columns: repeat(2, 1fr); grid-auto-rows: 100px; }
+    .g1, .g2, .g5{ grid-column: span 2; }
+    .g5{ grid-row: span 2; }
   }
-  .contact-item{
+
+  /* FAQ */
+  .faq-list{ max-width: 860px; margin-left: auto; margin-right: auto; }
+  .faq-item{
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-item:first-child{ border-top: 1px solid var(--line); }
+  .faq-item summary{
+    list-style: none;
+    cursor: pointer;
+    padding-top: 28px;
+    padding-bottom: 28px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-muted);
+    justify-content: space-between;
+    gap: 24px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(21px, 2.6vw, 27px);
+    color: var(--text);
+    transition: color .2s ease;
   }
-  .contact-item svg{ width: 18px; height: 18px; stroke: var(--accent-dark); flex-shrink: 0; }
+  .faq-item summary::-webkit-details-marker{ display: none; }
+  .faq-item summary:hover{ color: var(--accent-dark); }
+  .faq-item summary .plus{
+    position: relative;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  .faq-item summary .plus::before,
+  .faq-item summary .plus::after{
+    content: "";
+    position: absolute;
+    background: var(--accent-dark);
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  .faq-item summary .plus::before{ left: 0; top: 7px; width: 16px; height: 1px; }
+  .faq-item summary .plus::after{ top: 0; left: 7px; width: 1px; height: 16px; }
+  .faq-item[open] summary .plus::after{ transform: rotate(90deg); opacity: 0; }
+  .faq-item .answer{
+    padding-bottom: 28px;
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 62ch;
+  }
+
+  /* CONTACT */
+  .contact{ background: var(--deep-dark); }
+  .contact .script{ color: var(--accent); }
+  .contact h2{
+    color: var(--on-deep);
+    font-size: clamp(30px, 4.4vw, 46px);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 20px;
+  }
+  .contact h2 em{ text-transform: none; }
+  .contact p{ color: var(--on-deep-muted); }
+  .contact-grid{
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: 72px;
+    align-items: center;
+  }
+  @media (max-width: 900px){
+    .contact-grid{ grid-template-columns: 1fr; gap: 40px; }
+  }
+  .contact-list{
+    list-style: none;
+    margin-top: 40px;
+    border-top: 1px solid var(--line-light);
+  }
+  .contact-list li{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line-light);
+    color: var(--on-deep);
+    font-size: 15px;
+  }
+  .contact-list svg{ width: 20px; height: 20px; stroke: var(--accent); fill: none; flex-shrink: 0; }
+  .contact-actions{
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  .contact .ph{ aspect-ratio: 4/5; }
 
   /* FOOTER */
   footer{
-    padding-top: 48px;
-    padding-bottom: 48px;
-    border-top: 1px solid var(--line);
+    background: var(--bg-alt);
+    padding-top: 80px;
+    padding-bottom: 40px;
   }
-  .footer-inner{
+  .footer-top{
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid var(--line);
+  }
+  @media (max-width: 900px){
+    .footer-top{ grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+  @media (max-width: 520px){
+    .footer-top{ grid-template-columns: 1fr; }
+  }
+  .footer-brand h3{
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  .footer-brand p{ font-size: 14px; max-width: 34ch; }
+  .footer-col h4{
+    font-family: 'Overpass', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--text-faint);
+    margin-bottom: 18px;
+  }
+  .footer-col ul{ list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a{ font-size: 15px; color: var(--text-muted); transition: color .2s ease; }
+  .footer-col a:hover{ color: var(--accent-dark); }
+  .footer-mark{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding-top: 48px;
+    padding-bottom: 32px;
+  }
+  .footer-mark img{ height: 40px; }
+  .footer-mark span{
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 26px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+  }
+  .footer-bottom{
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 12px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
   }
-  .footer-inner p{ font-size: 13px; color: var(--text-faint); }
-  .footer-logo{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 800;
-    font-size: 15px;
-  }
-  .footer-logo img{ height: 26px; }
+  .footer-bottom p, .footer-bottom a{ font-size: 12px; color: var(--text-faint); max-width: none; }
 
   /* SCROLL REVEAL */
   .reveal{
@@ -525,10 +695,7 @@
     transform: translateY(0);
     transition: opacity .7s ease, transform .7s ease;
   }
-  .reveal.pre{
-    opacity: 0;
-    transform: translateY(14px);
-  }
+  .reveal.pre{ opacity: 0; transform: translateY(12px); }
 </style>
 </head>
 <body>
@@ -537,15 +704,16 @@
   <div class="wrap nav-inner">
     <a href="#" class="logo">
       <img src="assets/logo.png" alt="Logo Epic Events Centar">
-      <span>Epic Events Centar</span>
+      <span>Epic Events</span>
     </a>
     <nav class="desktop-nav">
       <ul>
         <li><a href="#ponuda">Ponuda</a></li>
-        <li><a href="#o-nama">O nama</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#prilike">Prilike</a></li>
+        <li><a href="#prostor">Prostor</a></li>
+        <li><a href="#pitanja">Pitanja</a></li>
       </ul>
-      <a href="tel:+381600000000" class="btn btn-primary">Pozovi za rezervaciju</a>
+      <a href="tel:+381600000000" class="btn nav-cta">Zakaži termin</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="Otvori meni">
       <span></span><span></span><span></span>
@@ -553,98 +721,113 @@
   </div>
   <div class="mobile-menu" id="mobile-menu">
     <a href="#ponuda">Ponuda</a>
-    <a href="#o-nama">O nama</a>
-    <a href="#kontakt">Kontakt</a>
-    <a href="tel:+381600000000" class="btn btn-primary">Pozovi za rezervaciju</a>
+    <a href="#prilike">Prilike</a>
+    <a href="#prostor">Prostor</a>
+    <a href="#pitanja">Pitanja</a>
+    <a href="tel:+381600000000" class="btn btn-primary">Zakaži termin</a>
   </div>
 </header>
 
 <main>
 
   <section class="hero">
+    <div class="hero-bg"></div>
     <div class="wrap hero-inner">
-      <h1>Venčanje na Dunavu, <span>koje kiša ne može da otkaže</span></h1>
+      <span class="script">Event centar na obali Dunava</span>
+      <h1>Venčanja i proslave <em>pod otvorenim nebom</em></h1>
       <p class="lead">Krovna terasa sa pokretnim krovom, pogled na reku i klima koja radi po svakom vremenu. Devet minuta od centra grada, a osećaj kao da si potpuno negde drugde.</p>
-      <a href="tel:+381600000000" class="btn btn-primary">Pozovi i zakaži termin</a>
-      <div class="hero-chips">
-        <span class="chip">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M12 3v18"/></svg>
-          Pokretni krov i staklene stranice
-        </span>
-        <span class="chip">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 22v-6M4.9 4.9l4.2 4.2M14.9 14.9l4.2 4.2M2 12h6M22 12h-6M4.9 19.1l4.2-4.2M14.9 9.1l4.2-4.2"/></svg>
-          Klima za svaku sezonu
-        </span>
-        <span class="chip">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0M2 18c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/></svg>
-          Pogled na Dunav
-        </span>
+      <a href="tel:+381600000000" class="btn btn-light">Pozovi i zakaži termin</a>
+    </div>
+    <span class="hero-note">Fotografija: krovna terasa u zalazak sunca</span>
+  </section>
+
+  <section class="strip">
+    <div class="wrap">
+      <div class="strip-grid">
+        <div class="strip-item">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-6 9 6"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+          <span>Pokretni krov i staklene stranice</span>
+        </div>
+        <div class="strip-item">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+          <span>Hlađenje i grejanje cele godine</span>
+        </div>
+        <div class="strip-item">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span>Devet minuta od centra grada</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="pain">
-    <div class="wrap pain-inner reveal">
-      <h2>Tražiš prostor na otvorenom, ali se plašiš vremenske prognoze</h2>
-      <p>Rezervišeš baštu ili terasu, a onda tri dana pred venčanje gledaš u nebo i praviš plan B. Klima u zatvorenim salama ti oduzima ambijent koji si htela od početka.</p>
-      <p>Epic Events Centar rešava to tako što terasa ostaje otvorena kad je lepo, a zatvara se za par minuta kad zatreba - bez otkazanog dana i bez kompromisa na atmosferi.</p>
+  <section id="o-nama">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="script">O nama</span>
+        <div class="rule"></div>
+        <h2>Dan koji se <em>ne ponavlja</em></h2>
+        <p>Epic Events Centar je prostor na obali Dunava posvećen venčanjima, proslavama i događajima na otvorenom. Terasa je građena tako da izgleda romantično kad sunce zalazi nad rekom, a radi elegantno bez obzira na prognozu.</p>
+        <p>Ne iznajmljujemo samo prostor. Vodimo te kroz organizaciju od prvog poziva do poslednjeg plesa.</p>
+        <div class="intro-actions">
+          <a href="#ponuda" class="btn btn-outline">Pogledaj ponudu</a>
+        </div>
+      </div>
+      <div class="intro-img reveal">
+        <div class="ph">Fotografija postavljenih stolova na krovnoj terasi</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap statement-inner reveal">
+      <div class="rule"></div>
+      <p>Rezervišeš terasu, a onda tri dana pred slavlje gledaš u prognozu. Kod nas krov ostaje otvoren dok je lepo i <em>zatvara se za par minuta</em> kad zatreba, bez otkazanog dana i bez kompromisa na atmosferi.</p>
     </div>
   </section>
 
   <section id="ponuda">
     <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Ponuda</span>
-        <h2>Šta dobijaš kad rezervišeš termin kod nas</h2>
+      <div class="section-head center reveal">
+        <span class="script">Naša ponuda</span>
+        <div class="rule"></div>
+        <h2>Šta dobijaš <em>uz termin</em></h2>
         <p>Sve što ti treba da venčanje ili proslava izgledaju kako si zamislila, na jednom mestu, na obali reke.</p>
       </div>
       <div class="services-grid">
 
         <div class="service-card reveal">
-          <div class="icon-badge">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6"/><path d="M2 9l3-3M22 9l-3-3"/></svg>
-          </div>
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6"/><path d="M2 9l3-3M22 9l-3-3"/></svg>
           <h3>Krovna terasa sa pokretnim krovom</h3>
           <p>Krov i staklene stranice se pomeraju za nekoliko minuta. Ako počne kiša usred venčanja, gosti to jedva primete.</p>
         </div>
 
         <div class="service-card reveal">
-          <div class="icon-badge">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14.66V17c0 1.1.9 2 2 2s2-.9 2-2v-2.34a4 4 0 1 0-4 0zM12 2v6M4.93 6.93l1.41 1.41M2 12h2M18.07 6.93l-1.41 1.41"/></svg>
-          </div>
-          <h3>Freonsko i evaporativno hlađenje i grejanje</h3>
-          <p>U julu je hladovina, u oktobru je toplo. Klima radi bez obzira na to koje je doba godine izabrala.</p>
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14.66V17c0 1.1.9 2 2 2s2-.9 2-2v-2.34a4 4 0 1 0-4 0zM12 2v6M4.93 6.93l1.41 1.41M2 12h2M18.07 6.93l-1.41 1.41"/></svg>
+          <h3>Hlađenje i grejanje</h3>
+          <p>Freonsko i evaporativno hlađenje i grejanje. U julu je hladovina, u oktobru je toplo, koji god datum da izabereš.</p>
         </div>
 
         <div class="service-card reveal">
-          <div class="icon-badge">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6c-1.6-1.6-4.2-1.6-5.8 0L12 7.4 9 4.6C7.4 3 4.8 3 3.2 4.6c-1.6 1.6-1.6 4.2 0 5.8L12 19l8.8-8.6c1.6-1.6 1.6-4.2 0-5.8z"/></svg>
-          </div>
-          <h3>Kompletna organizacija venčanja na otvorenom</h3>
-          <p>Sto, cveće, raspored sedenja, redosled programa - dogovorimo detalje unapred, ti dođeš i uživaš u danu.</p>
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6c-1.6-1.6-4.2-1.6-5.8 0L12 7.4 9 4.6C7.4 3 4.8 3 3.2 4.6c-1.6 1.6-1.6 4.2 0 5.8L12 19l8.8-8.6c1.6-1.6 1.6-4.2 0-5.8z"/></svg>
+          <h3>Kompletna organizacija venčanja</h3>
+          <p>Sto, cveće, raspored sedenja, redosled programa. Dogovorimo detalje unapred, ti dođeš i uživaš u danu.</p>
         </div>
 
         <div class="service-card reveal">
-          <div class="icon-badge">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0M2 18c2-3 4-3 6 0s4 3 6 0 4-3 6 0M2 6c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/></svg>
-          </div>
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0M2 18c2-3 4-3 6 0s4 3 6 0 4-3 6 0M2 6c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/></svg>
           <h3>Pogled na Dunav</h3>
           <p>Terasa gleda pravo na reku. Zalazak sunca nad vodom je deo dekora koji niko ne mora da postavlja.</p>
         </div>
 
         <div class="service-card reveal">
-          <div class="icon-badge">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          </div>
-          <h3>Devet minuta od centra grada</h3>
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <h3>Devet minuta od centra</h3>
           <p>Dovoljno blizu da gosti stignu bez planiranja putovanja, dovoljno daleko da izgleda kao da si negde na izletu.</p>
         </div>
 
         <div class="service-card reveal">
-          <div class="icon-badge">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <h3>Zakazivanje termina jednim pozivom</h3>
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+          <h3>Rezervacija jednim pozivom</h3>
           <p>Javiš se telefonom, kažemo ti koji su datumi slobodni i krenemo da dogovaramo detalje istog dana.</p>
         </div>
 
@@ -652,60 +835,162 @@
     </div>
   </section>
 
-  <section>
-    <div class="wrap">
-      <div class="section-head reveal">
-        <span class="eyebrow">Prostor</span>
-        <h2>Kako izgleda terasa uživo</h2>
-        <p>Nekoliko kadrova sa lokacije - stavi svoj termin i vidi ovo lično, uz kafu ili čašu vina.</p>
+  <section class="occasions" id="prilike">
+    <div class="wrap split">
+      <div class="reveal">
+        <div class="ph">Fotografija ceremonije na terasi sa pogledom na reku</div>
       </div>
-      <div class="gallery-grid">
-        <div class="placeholder-img reveal">FOTOGRAFIJA KROVNE TERASE SA POKRETNIM KROVOM</div>
-        <div class="placeholder-img reveal">FOTOGRAFIJA POGLEDA NA DUNAV SA TERASE</div>
-        <div class="placeholder-img reveal">FOTOGRAFIJA UREĐENOG PROSTORA ZA VENČANJE</div>
+      <div class="reveal">
+        <span class="script">Prilike</span>
+        <h2 style="font-size:clamp(28px,4vw,42px);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px;">Za koje događaje <em>otvaramo terasu</em></h2>
+        <ul class="occ-list">
+          <li class="occ-item">
+            <span class="occ-num">01</span>
+            <div>
+              <h3>Venčanja i svadbeni ručak</h3>
+              <p>Ceremonija na otvorenom, večera pod krovom koji se pomera i prvi ples sa pogledom na reku.</p>
+            </div>
+          </li>
+          <li class="occ-item">
+            <span class="occ-num">02</span>
+            <div>
+              <h3>Krštenja i porodične proslave</h3>
+              <p>Manja društva dobiju deo terase uređen po svom rasporedu sedenja i svom tempu dana.</p>
+            </div>
+          </li>
+          <li class="occ-item">
+            <span class="occ-num">03</span>
+            <div>
+              <h3>Rođendani i koktel zabave</h3>
+              <p>Stojeći format sa barom i muzikom, gosti se kreću između terase i pogleda na Dunav.</p>
+            </div>
+          </li>
+          <li class="occ-item">
+            <span class="occ-num">04</span>
+            <div>
+              <h3>Poslovni događaji</h3>
+              <p>Proslave firme, timski susreti i prezentacije devet minuta od centra grada.</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="about" id="o-nama">
-    <div class="wrap about-grid">
-      <div class="reveal">
-        <span class="eyebrow">O nama</span>
-        <h2>Event centar napravljen za jedan dan koji se ne ponavlja</h2>
-        <p>Epic Events Centar je prostor na obali Dunava posvećen venčanjima, proslavama i događajima na otvorenom. Terasa je građena tako da izgleda romantično kad sunce zalazi nad rekom, a funkcioniše elegantno bez obzira na prognozu.</p>
-        <p>Ne iznajmljujemo samo prostor. Vodimo te kroz organizaciju od prvog poziva do poslednjeg plesa, tako da dan bude onakav kakav si zamislila, a ne onakav kakav dozvoljava vreme napolju.</p>
-        <div class="about-traits">
-          <span class="trait">Romantično</span>
-          <span class="trait">Elegantno</span>
-          <span class="trait">Moderno</span>
+  <section id="kako-radimo">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="script">Kako radimo</span>
+        <div class="rule"></div>
+        <h2>Od poziva <em>do prvog plesa</em></h2>
+        <p>Četiri koraka, bez papirologije koja se vuče mesecima.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step reveal">
+          <span class="n">01</span>
+          <h3>Pozoveš i kažeš datum</h3>
+          <p>Odmah ti javimo da li je termin slobodan i šta ulazi u njega.</p>
+        </div>
+        <div class="step reveal">
+          <span class="n">02</span>
+          <h3>Dođeš da vidiš prostor</h3>
+          <p>Prođemo kroz terasu, raspored stolova i mesto za ceremoniju.</p>
+        </div>
+        <div class="step reveal">
+          <span class="n">03</span>
+          <h3>Dogovorimo detalje</h3>
+          <p>Cveće, raspored sedenja i redosled programa upišemo u plan dana.</p>
+        </div>
+        <div class="step reveal">
+          <span class="n">04</span>
+          <h3>Dan događaja</h3>
+          <p>Ti dolaziš kao gost na svoje slavlje, mi vodimo računa o ostatku.</p>
         </div>
       </div>
-      <div class="reveal">
-        <div class="placeholder-img">FOTOGRAFIJA TERASE U VEČERNJEM OSVETLJENJU</div>
+    </div>
+  </section>
+
+  <section class="gallery" id="prostor">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="script">Prostor</span>
+        <div class="rule"></div>
+        <h2>Kako terasa <em>izgleda uživo</em></h2>
+        <p>Nekoliko kadrova sa lokacije. Zakaži obilazak i vidi ovo lično, uz kafu ili čašu vina.</p>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="ph g1">Fotografija krovne terase sa pokretnim krovom</div>
+        <div class="ph g2">Fotografija pogleda na Dunav sa terase</div>
+        <div class="ph g3">Fotografija postavljenog stola</div>
+        <div class="ph g4">Fotografija dekoracije za ceremoniju</div>
+        <div class="ph g5">Fotografija terase u večernjem osvetljenju</div>
       </div>
     </div>
   </section>
 
-  <section class="cta-close" id="kontakt">
+  <section id="pitanja">
     <div class="wrap">
-      <div class="cta-box reveal">
-        <span class="eyebrow" style="justify-content:center;">Rezervacija</span>
-        <h2>Zakaži termin dok je slobodan datum koji želiš</h2>
+      <div class="section-head center reveal">
+        <span class="script">Česta pitanja</span>
+        <div class="rule"></div>
+        <h2>Ono što <em>najčešće pitaju</em></h2>
+      </div>
+      <div class="faq-list reveal">
+        <details class="faq-item">
+          <summary>Šta se dešava ako pada kiša<span class="plus"></span></summary>
+          <div class="answer">Krov i staklene stranice se zatvore za nekoliko minuta. Program se nastavlja na istom mestu, gosti ostaju na terasi.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Da li je prostor grejan i klimatizovan<span class="plus"></span></summary>
+          <div class="answer">Jeste. Terasa ima freonsko i evaporativno hlađenje i grejanje, pa radi i u julu i u oktobru.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Koliko ste udaljeni od centra grada<span class="plus"></span></summary>
+          <div class="answer">Devet minuta vožnje. Gosti stižu bez planiranja putovanja i bez traženja prevoza posle ponoći.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Organizujete li venčanje ili samo izdajete prostor<span class="plus"></span></summary>
+          <div class="answer">Radimo kompletnu organizaciju venčanja na otvorenom, od rasporeda sedenja do redosleda programa. Ako želiš samo prostor, i to je opcija.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Može li obilazak pre rezervacije<span class="plus"></span></summary>
+          <div class="answer">Može. Javi se telefonom i dogovorimo termin kad je terasa slobodna, pa prođemo kroz prostor zajedno.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Kako se rezerviše datum<span class="plus"></span></summary>
+          <div class="answer">Jednim pozivom. Kažemo ti koji su datumi otvoreni i istog dana krećemo da dogovaramo detalje.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="kontakt">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <span class="script">Kontakt</span>
+        <h2>Zakaži termin <em>dok je datum slobodan</em></h2>
         <p>Jedan poziv je dovoljan da čuješ koji su datumi otvoreni i da počneš da planiraš dan na Dunavu.</p>
-        <div class="cta-actions">
-          <a href="tel:+381600000000" class="btn btn-primary">Pozovi i rezerviši termin</a>
-          <a href="#ponuda" class="btn btn-outline">Pogledaj šta je uključeno</a>
-        </div>
-        <div class="contact-info">
-          <span class="contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+        <ul class="contact-list">
+          <li>
+            <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
             060 0 000 000
-          </span>
-          <span class="contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            Obala Dunava, 9 min od centra grada
-          </span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Obala Dunava, 9 minuta od centra grada
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            Obilazak terase po dogovoru
+          </li>
+        </ul>
+        <div class="contact-actions">
+          <a href="tel:+381600000000" class="btn btn-light">Pozovi i rezerviši termin</a>
+          <a href="#ponuda" class="btn btn-light">Pogledaj šta je uključeno</a>
         </div>
+      </div>
+      <div class="reveal">
+        <div class="ph ph-dark">Fotografija mladenaca na terasi u zalazak sunca</div>
       </div>
     </div>
   </section>
@@ -713,25 +998,60 @@
 </main>
 
 <footer>
-  <div class="wrap footer-inner">
-    <a href="#" class="footer-logo">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Epic Events</h3>
+        <p>Event centar na obali Dunava za venčanja, proslave i događaje na otvorenom.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sajt</h4>
+        <ul>
+          <li><a href="#o-nama">O nama</a></li>
+          <li><a href="#ponuda">Ponuda</a></li>
+          <li><a href="#prostor">Prostor</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Prilike</h4>
+        <ul>
+          <li><a href="#prilike">Venčanja</a></li>
+          <li><a href="#prilike">Porodične proslave</a></li>
+          <li><a href="#prilike">Poslovni događaji</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+381600000000">060 0 000 000</a></li>
+          <li><a href="#kontakt">Zakaži termin</a></li>
+          <li><a href="#pitanja">Česta pitanja</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-mark">
       <img src="assets/logo.png" alt="Logo Epic Events Centar">
-      <span>Epic Events Centar</span>
-    </a>
-    <p>&copy; 2026 Epic Events Centar. Sva prava zadržana.</p>
+      <span>Epic Events</span>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Epic Events Centar. Sva prava zadržana.</p>
+      <p>Obala Dunava, 9 minuta od centra grada</p>
+    </div>
   </div>
 </footer>
 
 <script>
   // Header scroll state
   const header = document.getElementById('site-header');
-  window.addEventListener('scroll', () => {
-    if(window.scrollY > 20){
+  const onScroll = () => {
+    if(window.scrollY > 40){
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
-  });
+  };
+  window.addEventListener('scroll', onScroll);
+  onScroll();
 
   // Mobile menu toggle
   const hamburger = document.getElementById('hamburger');
@@ -749,9 +1069,8 @@
 
   // Scroll reveal
   const revealEls = document.querySelectorAll('.reveal');
-  revealEls.forEach(el => el.classList.add('pre'));
-
   if('IntersectionObserver' in window){
+    revealEls.forEach(el => el.classList.add('pre'));
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
@@ -760,10 +1079,7 @@
         }
       });
     }, { threshold: 0.12 });
-
     revealEls.forEach(el => observer.observe(el));
-  } else {
-    revealEls.forEach(el => el.classList.remove('pre'));
   }
 </script>
 
