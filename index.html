@@ -430,6 +430,63 @@
   .statement p em{ color: var(--accent); font-style: italic; }
   .statement .rule{ background: var(--accent); }
 
+  /* PROBLEM -> RESENJE */
+  .pr-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 900px){
+    .pr-grid{ grid-template-columns: 1fr; }
+  }
+  .panel{
+    padding-top: 56px;
+    padding-bottom: 56px;
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+  @media (max-width: 600px){
+    .panel{ padding-left: 24px; padding-right: 24px; }
+  }
+  .panel-light{ background: var(--bg-alt); }
+  .panel-dark{ background: var(--deep); }
+  .panel-dark .label{ color: rgba(255,250,244,0.6); }
+  .panel-dark h3{ color: var(--on-deep); }
+  .panel-dark p{ color: var(--on-deep-muted); }
+  .panel-dark .pr-list svg{ stroke: var(--accent); }
+  .panel-dark .pr-list li{ border-top-color: var(--line-light); }
+  .pr-list{ list-style: none; margin-top: 8px; }
+  .pr-list li{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 18px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    border-top: 1px solid var(--line);
+  }
+  .pr-list svg{
+    width: 20px;
+    height: 20px;
+    stroke: var(--text-faint);
+    fill: none;
+    margin-top: 6px;
+  }
+  .pr-list h3{ font-size: 22px; margin-bottom: 6px; }
+  .pr-list p{ font-size: 15px; max-width: none; }
+
+  /* PROSTOR: PODACI */
+  .facts{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 28px;
+    margin-bottom: 56px;
+    border-top: 1px solid var(--line);
+  }
+  @media (max-width: 900px){ .facts{ grid-template-columns: 1fr 1fr; gap: 24px; } }
+  @media (max-width: 520px){ .facts{ grid-template-columns: 1fr; } }
+  .fact .label{ display: block; margin-bottom: 8px; color: var(--accent-dark); }
+  .fact p{ font-size: 15px; max-width: none; color: var(--text); }
+
   /* SERVICES */
   .services-grid{
     display: grid;
@@ -760,6 +817,124 @@
     </div>
   </section>
 
+  <section class="pr" id="problem">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="script">Problem i rešenje</span>
+        <div class="rule"></div>
+        <h2>Prognoza ne bi smela <em>da vodi tvoj dan</em></h2>
+        <p>Otvoreni prostor i siguran plan obično se biraju jedno umesto drugog. Kod nas ne moraš da biraš.</p>
+      </div>
+      <div class="pr-grid">
+
+        <div class="panel panel-light reveal">
+          <span class="label">Kako obično ide</span>
+          <ul class="pr-list">
+            <li>
+              <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+              <div>
+                <h3>Tri dana pred slavlje gledaš u prognozu</h3>
+                <p>Rezervišeš baštu ili terasu, pa u poslednjem trenutku praviš plan B za kišu.</p>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+              <div>
+                <h3>Sigurna varijanta je zatvorena sala</h3>
+                <p>Dobiješ krov nad glavom, a izgubiš otvoreno nebo, pogled i ambijent koji si htela od početka.</p>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+              <div>
+                <h3>Organizacija se lomi na tebi</h3>
+                <p>Prostor, dekoracija i raspored programa dogovaraju se sa pet različitih ljudi i pet različitih rokova.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel panel-dark reveal">
+          <span class="label">Kako ide kod nas</span>
+          <ul class="pr-list">
+            <li>
+              <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
+              <div>
+                <h3>Krov se zatvara za par minuta</h3>
+                <p>Ako počne kiša, krov i staklene stranice se pomere, a program se nastavlja na istom mestu.</p>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
+              <div>
+                <h3>Ostaješ napolju, uz reku</h3>
+                <p>Dok je lepo, terasa je otvorena. Zalazak sunca nad Dunavom radi posao koji nijedna sala ne može.</p>
+              </div>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
+              <div>
+                <h3>Sve dogovaraš na jednom mestu</h3>
+                <p>Prostor, dekoracija, raspored sedenja i redosled programa idu kroz isti dogovor i istu osobu.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="ponuda">
+    <div class="wrap">
+      <div class="section-head center reveal">
+        <span class="script">Naša ponuda</span>
+        <div class="rule"></div>
+        <h2>Šta <em>radimo za tebe</em></h2>
+        <p>Od rezervacije datuma do koordinacije na sam dan. Uzmi ceo paket ili samo ono što ti treba.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6c-1.6-1.6-4.2-1.6-5.8 0L12 7.4 9 4.6C7.4 3 4.8 3 3.2 4.6c-1.6 1.6-1.6 4.2 0 5.8L12 19l8.8-8.6c1.6-1.6 1.6-4.2 0-5.8z"/></svg>
+          <h3>Kompletna organizacija venčanja</h3>
+          <p>Vodimo ceo dan, od prvog dogovora do poslednjeg plesa. Ti donosiš odluke, mi vodimo računa o izvođenju.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6"/><path d="M2 9l3-3M22 9l-3-3"/></svg>
+          <h3>Iznajmljivanje krovne terase</h3>
+          <p>Terasa sa pokretnim krovom, staklenim stranicama i klimom, na termin koji rezervišeš samo za sebe.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V8"/><path d="M5 21V12a7 7 0 0 1 14 0v9"/><path d="M8 4h8"/></svg>
+          <h3>Ceremonija na otvorenom</h3>
+          <p>Postavimo mesto za venčanje pod vedrim nebom, sa rekom u pozadini i stolicama za goste po tvom rasporedu.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 13c-3 0-5-2-5-5 0-2 1-4 5-6 4 2 5 4 5 6 0 3-2 5-5 5z"/><path d="M12 13v8"/><path d="M8 21h8"/></svg>
+          <h3>Dekoracija i postavka prostora</h3>
+          <p>Cveće, stolovi, stolnjaci i raspored sedenja. Kažeš kako zamišljaš, mi to postavimo pre dolaska gostiju.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <h3>Koordinacija na dan događaja</h3>
+          <p>Redosled programa, tajming muzike i kretanje gostiju držimo mi, da ti taj dan ne odgovaraš na pitanja.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M9 15h6"/></svg>
+          <h3>Obilazak i rezervacija termina</h3>
+          <p>Prođemo kroz terasu, proverimo slobodne datume i upišemo tvoj termin istog dana kad se javiš.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <section id="o-nama">
     <div class="wrap">
       <div class="section-head center reveal">
@@ -769,7 +944,7 @@
         <p>Epic Events Centar je prostor na obali Dunava posvećen venčanjima, proslavama i događajima na otvorenom. Terasa je građena tako da izgleda romantično kad sunce zalazi nad rekom, a radi elegantno bez obzira na prognozu.</p>
         <p>Ne iznajmljujemo samo prostor. Vodimo te kroz organizaciju od prvog poziva do poslednjeg plesa.</p>
         <div class="intro-actions">
-          <a href="#ponuda" class="btn btn-outline">Pogledaj ponudu</a>
+          <a href="#kontakt" class="btn btn-outline">Zakaži obilazak terase</a>
         </div>
       </div>
       <div class="intro-img reveal">
@@ -781,57 +956,7 @@
   <section class="statement">
     <div class="wrap statement-inner reveal">
       <div class="rule"></div>
-      <p>Rezervišeš terasu, a onda tri dana pred slavlje gledaš u prognozu. Kod nas krov ostaje otvoren dok je lepo i <em>zatvara se za par minuta</em> kad zatreba, bez otkazanog dana i bez kompromisa na atmosferi.</p>
-    </div>
-  </section>
-
-  <section id="ponuda">
-    <div class="wrap">
-      <div class="section-head center reveal">
-        <span class="script">Naša ponuda</span>
-        <div class="rule"></div>
-        <h2>Šta dobijaš <em>uz termin</em></h2>
-        <p>Sve što ti treba da venčanje ili proslava izgledaju kako si zamislila, na jednom mestu, na obali reke.</p>
-      </div>
-      <div class="services-grid">
-
-        <div class="service-card reveal">
-          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-6h6v6"/><path d="M2 9l3-3M22 9l-3-3"/></svg>
-          <h3>Krovna terasa sa pokretnim krovom</h3>
-          <p>Krov i staklene stranice se pomeraju za nekoliko minuta. Ako počne kiša usred venčanja, gosti to jedva primete.</p>
-        </div>
-
-        <div class="service-card reveal">
-          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14.66V17c0 1.1.9 2 2 2s2-.9 2-2v-2.34a4 4 0 1 0-4 0zM12 2v6M4.93 6.93l1.41 1.41M2 12h2M18.07 6.93l-1.41 1.41"/></svg>
-          <h3>Hlađenje i grejanje</h3>
-          <p>Freonsko i evaporativno hlađenje i grejanje. U julu je hladovina, u oktobru je toplo, koji god datum da izabereš.</p>
-        </div>
-
-        <div class="service-card reveal">
-          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6c-1.6-1.6-4.2-1.6-5.8 0L12 7.4 9 4.6C7.4 3 4.8 3 3.2 4.6c-1.6 1.6-1.6 4.2 0 5.8L12 19l8.8-8.6c1.6-1.6 1.6-4.2 0-5.8z"/></svg>
-          <h3>Kompletna organizacija venčanja</h3>
-          <p>Sto, cveće, raspored sedenja, redosled programa. Dogovorimo detalje unapred, ti dođeš i uživaš u danu.</p>
-        </div>
-
-        <div class="service-card reveal">
-          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0M2 18c2-3 4-3 6 0s4 3 6 0 4-3 6 0M2 6c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/></svg>
-          <h3>Pogled na Dunav</h3>
-          <p>Terasa gleda pravo na reku. Zalazak sunca nad vodom je deo dekora koji niko ne mora da postavlja.</p>
-        </div>
-
-        <div class="service-card reveal">
-          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          <h3>Devet minuta od centra</h3>
-          <p>Dovoljno blizu da gosti stignu bez planiranja putovanja, dovoljno daleko da izgleda kao da si negde na izletu.</p>
-        </div>
-
-        <div class="service-card reveal">
-          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
-          <h3>Rezervacija jednim pozivom</h3>
-          <p>Javiš se telefonom, kažemo ti koji su datumi slobodni i krenemo da dogovaramo detalje istog dana.</p>
-        </div>
-
-      </div>
+      <p>Jedno mesto za ceo dan. Ceremonija, večera i prvi ples <em>na istoj terasi</em>, sa pogledom na reku od popodneva do posle ponoći.</p>
     </div>
   </section>
 
@@ -917,6 +1042,12 @@
         <div class="rule"></div>
         <h2>Kako terasa <em>izgleda uživo</em></h2>
         <p>Nekoliko kadrova sa lokacije. Zakaži obilazak i vidi ovo lično, uz kafu ili čašu vina.</p>
+      </div>
+      <div class="facts reveal">
+        <div class="fact"><span class="label">Krov</span><p>Pokretni krov i staklene stranice</p></div>
+        <div class="fact"><span class="label">Klima</span><p>Freonsko i evaporativno hlađenje i grejanje</p></div>
+        <div class="fact"><span class="label">Pogled</span><p>Dunav sa cele terase</p></div>
+        <div class="fact"><span class="label">Lokacija</span><p>Devet minuta od centra grada</p></div>
       </div>
       <div class="gallery-grid reveal">
         <div class="ph g1">Fotografija krovne terase sa pokretnim krovom</div>
